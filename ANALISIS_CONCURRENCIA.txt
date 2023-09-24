@@ -1,0 +1,13 @@
+La colección usada en InMemoryBlueprintPersistence pueden dar lugar a condiciones de carrera si no se gestionan de manera adecuada.
+Estas condiciones de carrera se producen cuando múltiples solicitudes concurrentes intentan modificar el mismo blueprint.
+En tales situaciones, es crucial implementar estrategias de control de concurrencia para garantizar la coherencia de los datos
+y prevenir problemas de sincronización entre hilos.
+Para solucionar esto se hará uso de una colección thread-safe, la cual va ser ConcurrentHashMap, que es una implementación de Map diseñada
+específicamente para ser segura para hilos.
+
+En el método que agrega un nuevo blueprint se consulta y luego se realiza la adición del blueprint es una región crítica,
+debe ser una operación atómica para que se realice de forma secuencial, para que otro hilo no realice una modificación no deseada.
+Para evitar la condición de carrera en el método saveBlueprint, usare el método putIfAbsent() de ConcurrentHashMap. De esta forma,
+se intenta agregar un blueprint solo si la clave no existe en el Map. Si la clave ya existe, devolverá el valor existente
+asociado con esa clave y no realizará ninguna operación de inserción. Esto garantiza que la operación de verificación
+y agregación condicional se realice de manera atómica y evita la condición de carrera.
