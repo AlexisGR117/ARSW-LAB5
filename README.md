@@ -135,7 +135,10 @@ Del anterior diagrama de componentes (de alto nivel), se desprendió el siguient
     <img src="img/Parte2-4-1.jpg" alt="Petición PUT exitosa">
 </p>
 <p align="center">
-    <img src="img/Parte2-4-2.jpg" alt="Petición PUT fallida, el blueprint no existe">
+    <img src="img/Parte2-4-2.jpg" alt="Petición GET, verificación del PUT hecho previamente">
+</p>
+<p align="center">
+    <img src="img/Parte2-4-3.jpg" alt="Petición PUT fallida, el blueprint no existe">
 </p>
 
 ### Parte III
